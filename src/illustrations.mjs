@@ -1,187 +1,172 @@
-// Original SVG editorial illustrations & vector world locator map for Sunday 22 November 2026.
+// Original high-contrast editorial SVG illustrations & light-toned vector world locator map
+// for Sunday 22 November 2026 — designed to stay sharp and unmistakable even at 300px width.
 
 export function renderHeroArt(key) {
   switch (key) {
     case 'cop31':
-      return `<svg viewBox="0 0 320 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      return `<svg viewBox="0 0 320 104" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="copSky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#192F4D"/>
-            <stop offset="56%" stop-color="#436788"/>
-            <stop offset="100%" stop-color="#DF9E58"/>
+            <stop offset="0%" stop-color="#CBE0EE"/>
+            <stop offset="68%" stop-color="#EBF2F6"/>
+            <stop offset="100%" stop-color="#F7D8B5"/>
           </linearGradient>
           <linearGradient id="copSea" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#183854"/>
-            <stop offset="100%" stop-color="#0D1E30"/>
-          </linearGradient>
-          <linearGradient id="thermFill" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0%" stop-color="#D97724"/>
-            <stop offset="100%" stop-color="#C81E2B"/>
+            <stop offset="0%" stop-color="#28587B"/>
+            <stop offset="100%" stop-color="#173852"/>
           </linearGradient>
         </defs>
-        <rect width="320" height="100" fill="url(#copSky)"/>
-        <!-- Taurus Mountains & Mediterranean Sea -->
-        <path d="M0 72 L34 55 L68 65 L112 49 L154 63 L202 52 L250 64 L294 54 L320 63 L320 76 L0 76 Z" fill="#27435F" opacity="0.74"/>
-        <rect x="0" y="74" width="320" height="26" fill="url(#copSea)"/>
-        <line x1="0" y1="74" x2="320" y2="74" stroke="#F4CD8F" stroke-width="0.9" opacity="0.55"/>
-        <!-- Summit plenary dome & colonnade (shifted slightly right so badge 1 has clean water corner) -->
-        <path d="M30 74 L30 53 L118 53 L118 74 Z" fill="#EFE7D6"/>
-        <path d="M38 53 Q74 26 110 53 Z" fill="#D5CBB6" stroke="#182C45" stroke-width="1"/>
-        <g fill="#28405A">
-          <rect x="37" y="57" width="6" height="17"/><rect x="49" y="57" width="6" height="17"/>
-          <rect x="61" y="57" width="6" height="17"/><rect x="73" y="57" width="8" height="17"/>
-          <rect x="87" y="57" width="6" height="17"/><rect x="99" y="57" width="6" height="17"/>
-        </g>
-        <!-- Split draft text document with dramatic red collapse crack -->
-        <g transform="translate(134,15)">
-          <rect x="0" y="0" width="56" height="65" rx="2" fill="#FBF8F0" stroke="#1A2B40" stroke-width="1.3"/>
-          <rect x="7" y="9" width="30" height="3.8" fill="#1A2B40"/>
-          <rect x="7" y="17" width="42" height="2.2" fill="#8C99A8"/>
-          <rect x="7" y="23" width="38" height="2.2" fill="#8C99A8"/>
-          <rect x="7" y="29" width="42" height="2.2" fill="#8C99A8"/>
-          <rect x="7" y="36" width="34" height="2.2" fill="#8C99A8"/>
-          <rect x="7" y="42" width="40" height="2.2" fill="#8C99A8"/>
-          <rect x="7" y="49" width="28" height="2.2" fill="#8C99A8"/>
-          <!-- Jagged collapse fissure -->
-          <path d="M33 0 L25 18 L36 31 L23 47 L31 65" fill="none" stroke="#B31B24" stroke-width="2.8"/>
-          <path d="M33 0 L25 18 L36 31 L23 47 L31 65" fill="none" stroke="#FFF4D6" stroke-width="0.8" opacity="0.8"/>
-        </g>
-        <!-- Cracked gavel & block -->
-        <g transform="translate(202,46)">
-          <rect x="6" y="24" width="38" height="7.5" rx="1.5" fill="#5A331C" stroke="#241208" stroke-width="0.9"/>
-          <g transform="rotate(-24 26 14)">
-            <rect x="14" y="6" width="25" height="11.5" rx="2" fill="#834824" stroke="#2B1508" stroke-width="1"/>
-            <rect x="23" y="17.5" width="5.5" height="25" rx="1.5" fill="#633519"/>
+        <rect width="320" height="104" fill="url(#copSky)"/>
+        <!-- Taurus Mountains silhouette & Mediterranean coastline -->
+        <path d="M0 78 L36 58 L72 68 L114 52 L156 66 L204 54 L252 66 L296 56 L320 64 L320 82 L0 82 Z" fill="#89A8BF" opacity="0.65"/>
+        <rect x="0" y="79" width="320" height="25" fill="url(#copSea)"/>
+        <line x1="0" y1="79" x2="320" y2="79" stroke="#FFF4E0" stroke-width="1" opacity="0.7"/>
+        <!-- Antalya summit plenary hall -->
+        <g transform="translate(20,30)">
+          <rect x="6" y="25" width="90" height="24" fill="#F6EFE2" stroke="#1E354D" stroke-width="1.4"/>
+          <path d="M14 25 Q51 -2 88 25 Z" fill="#DDD2BE" stroke="#1E354D" stroke-width="1.4"/>
+          <g fill="#2B4866">
+            <rect x="14" y="30" width="7" height="19"/><rect x="27" y="30" width="7" height="19"/>
+            <rect x="40" y="30" width="7" height="19"/><rect x="53" y="30" width="9" height="19"/>
+            <rect x="68" y="30" width="7" height="19"/><rect x="81" y="30" width="7" height="19"/>
           </g>
-          <path d="M12 10 L4 4 M16 4 L14 -3 M39 6 L45 0" stroke="#F4D35E" stroke-width="1.8" stroke-linecap="round"/>
         </g>
-        <!-- Overtime clock (44h+) & rising thermometer -->
-        <g transform="translate(262,24)">
-          <circle cx="0" cy="0" r="12.5" fill="#FBF8F0" stroke="#182C45" stroke-width="1.8"/>
-          <line x1="0" y1="0" x2="0" y2="-7.5" stroke="#182C45" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="0" y1="0" x2="6.5" y2="3.5" stroke="#B31B24" stroke-width="1.7" stroke-linecap="round"/>
-          <circle cx="0" cy="0" r="1.7" fill="#B31B24"/>
+        <!-- Torn "Antalya Pact" draft split in two by bold crimson fracture -->
+        <g transform="translate(130,13)">
+          <rect x="0" y="0" width="62" height="68" rx="2" fill="#FFFFFF" stroke="#152438" stroke-width="1.6"/>
+          <rect x="8" y="9" width="34" height="4.5" fill="#152438"/>
+          <rect x="8" y="18" width="46" height="2.6" fill="#7D8C9E"/>
+          <rect x="8" y="25" width="42" height="2.6" fill="#7D8C9E"/>
+          <rect x="8" y="32" width="46" height="2.6" fill="#7D8C9E"/>
+          <rect x="8" y="39" width="38" height="2.6" fill="#7D8C9E"/>
+          <rect x="8" y="46" width="44" height="2.6" fill="#7D8C9E"/>
+          <rect x="8" y="54" width="32" height="2.6" fill="#7D8C9E"/>
+          <path d="M36 0 L26 20 L39 34 L24 50 L34 68" fill="none" stroke="#B81D24" stroke-width="3.6" stroke-linejoin="round"/>
+          <path d="M36 0 L26 20 L39 34 L24 50 L34 68" fill="none" stroke="#FFF7E0" stroke-width="1"/>
         </g>
-        <g transform="translate(290,15)">
-          <rect x="0" y="0" width="11.5" height="56" rx="5.7" fill="#FBF8F0" stroke="#182C45" stroke-width="1.4"/>
-          <rect x="3" y="10" width="5.5" height="46" rx="2.7" fill="url(#thermFill)"/>
-          <circle cx="5.7" cy="58" r="8.8" fill="#C81E2B" stroke="#182C45" stroke-width="1.4"/>
-          <line x1="-5" y1="24" x2="-1" y2="24" stroke="#FBF8F0" stroke-width="1.3"/>
-          <line x1="-5" y1="36" x2="-1" y2="36" stroke="#FBF8F0" stroke-width="1.3"/>
+        <!-- Broken wooden gavel & impact sparks -->
+        <g transform="translate(204,44)">
+          <rect x="4" y="27" width="42" height="8" rx="1.5" fill="#633519" stroke="#221006" stroke-width="1.1"/>
+          <g transform="rotate(-24 25 14)">
+            <rect x="11" y="5" width="28" height="13" rx="2" fill="#8C4B24" stroke="#221006" stroke-width="1.2"/>
+            <rect x="22" y="18" width="6" height="26" rx="1.5" fill="#633519" stroke="#221006" stroke-width="0.9"/>
+          </g>
+          <path d="M9 11 L2 4 M15 4 L13 -4 M41 7 L48 0" stroke="#B81D24" stroke-width="2.1" stroke-linecap="round"/>
         </g>
-        <!-- Delegates walking out right -->
-        <g fill="#0B1624">
-          <circle cx="248" cy="80" r="2.8"/><path d="M244 100 L246 84 L250 84 L252 100 Z"/>
-          <circle cx="261" cy="79" r="2.8"/><path d="M257 100 L259 83 L263 83 L265 100 Z"/>
-          <circle cx="274" cy="81" r="2.6"/><path d="M270 100 L272 85 L276 85 L278 100 Z"/>
+        <!-- Overtime clock + red thermometer (clear of top-right NO DEAL · 49H badge) -->
+        <g transform="translate(256,42)">
+          <circle cx="0" cy="0" r="12.5" fill="#FFFFFF" stroke="#152438" stroke-width="2"/>
+          <line x1="0" y1="0" x2="0" y2="-7.5" stroke="#152438" stroke-width="2" stroke-linecap="round"/>
+          <line x1="0" y1="0" x2="6.5" y2="3.5" stroke="#B81D24" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="0" cy="0" r="2" fill="#B81D24"/>
+        </g>
+        <g transform="translate(289,26)">
+          <rect x="0" y="0" width="11.5" height="50" rx="5.7" fill="#FFFFFF" stroke="#152438" stroke-width="1.6"/>
+          <rect x="3" y="9" width="5.5" height="41" rx="2.7" fill="#C92229"/>
+          <circle cx="5.7" cy="52" r="8.8" fill="#C92229" stroke="#152438" stroke-width="1.6"/>
+          <line x1="-5" y1="19" x2="-1" y2="19" stroke="#152438" stroke-width="1.5"/>
+          <line x1="-5" y1="31" x2="-1" y2="31" stroke="#152438" stroke-width="1.5"/>
         </g>
       </svg>`;
 
     case 'ukraine':
-      return `<svg viewBox="0 0 320 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      return `<svg viewBox="0 0 320 104" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="uaSky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#081120"/>
-            <stop offset="65%" stop-color="#142540"/>
-            <stop offset="100%" stop-color="#28354D"/>
+            <stop offset="0%" stop-color="#0B1528"/>
+            <stop offset="68%" stop-color="#1A2E4F"/>
+            <stop offset="100%" stop-color="#2D4160"/>
           </linearGradient>
-          <linearGradient id="beam" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0%" stop-color="#F6E58D" stop-opacity="0.6"/>
-            <stop offset="100%" stop-color="#F6E58D" stop-opacity="0"/>
+          <linearGradient id="uaBeam" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stop-color="#FFE680" stop-opacity="0.65"/>
+            <stop offset="100%" stop-color="#FFE680" stop-opacity="0"/>
           </linearGradient>
-          <radialGradient id="blast" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#FFF2B2"/>
-            <stop offset="45%" stop-color="#F28C28" stop-opacity="0.92"/>
+          <radialGradient id="uaBlast" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFF5BA"/>
+            <stop offset="48%" stop-color="#F28C28" stop-opacity="0.95"/>
             <stop offset="100%" stop-color="#A81E24" stop-opacity="0"/>
           </radialGradient>
         </defs>
-        <rect width="320" height="100" fill="url(#uaSky)"/>
-        <!-- Air defence searchlight beams -->
-        <polygon points="24,100 80,8 112,8 40,100" fill="url(#beam)"/>
-        <polygon points="112,100 44,10 68,10 124,100" fill="url(#beam)" opacity="0.52"/>
-        <!-- Radar intercept arcs & bursts -->
-        <path d="M30 94 Q82 44 138 30" fill="none" stroke="#64DFDF" stroke-width="1.3" stroke-dasharray="3 3" opacity="0.85"/>
-        <path d="M88 96 Q126 54 168 28" fill="none" stroke="#64DFDF" stroke-width="1.3" stroke-dasharray="3 3" opacity="0.72"/>
-        <circle cx="98" cy="34" r="5.2" fill="#FDE047" opacity="0.92"/>
-        <circle cx="98" cy="34" r="11" fill="#FDE047" opacity="0.22"/>
-        <circle cx="144" cy="24" r="4.2" fill="#FDE047" opacity="0.88"/>
-        <!-- Delta-wing drone silhouettes -->
-        <g fill="#E2ECF7" stroke="#081120" stroke-width="0.6">
-          <polygon points="50,26 65,21 60,28 65,33"/>
-          <polygon points="118,45 133,40 128,47 133,52"/>
-          <polygon points="154,37 169,32 164,39 169,44"/>
-          <polygon points="74,54 87,50 83,55 87,59" opacity="0.82"/>
+        <rect width="320" height="104" fill="url(#uaSky)"/>
+        <polygon points="22,104 82,6 118,6 42,104" fill="url(#uaBeam)"/>
+        <polygon points="116,104 42,8 70,8 130,104" fill="url(#uaBeam)" opacity="0.5"/>
+        <path d="M28 96 Q84 44 142 30" fill="none" stroke="#7AEBEB" stroke-width="1.5" stroke-dasharray="3.5 3"/>
+        <path d="M88 98 Q128 54 170 28" fill="none" stroke="#7AEBEB" stroke-width="1.5" stroke-dasharray="3.5 3" opacity="0.8"/>
+        <circle cx="98" cy="34" r="5.5" fill="#FDE047"/>
+        <circle cx="98" cy="34" r="12" fill="#FDE047" opacity="0.25"/>
+        <circle cx="146" cy="24" r="4.5" fill="#FDE047"/>
+        <!-- Crisp delta-wing drones -->
+        <g fill="#F1F5F9" stroke="#081120" stroke-width="0.7">
+          <polygon points="48,27 66,21 60,29 66,35"/>
+          <polygon points="116,46 134,40 128,48 134,54"/>
+          <polygon points="154,37 172,31 166,39 172,45"/>
+          <polygon points="74,56 89,51 84,57 89,62"/>
         </g>
-        <!-- Ground -->
-        <rect x="0" y="87" width="320" height="13" fill="#0A111D"/>
-        <!-- Five-storey Dymer apartment block with collapsed section -->
-        <g transform="translate(184,23)">
-          <rect x="0" y="6" width="84" height="62" fill="#2A3649" stroke="#101824" stroke-width="1.2"/>
-          <rect x="-2" y="4" width="88" height="4" fill="#3B495E"/>
+        <rect x="0" y="90" width="320" height="14" fill="#0B1320"/>
+        <!-- Five-storey Dymer residential block with dramatic collapse -->
+        <g transform="translate(182,22)">
+          <rect x="0" y="6" width="84" height="64" fill="#324157" stroke="#0E1726" stroke-width="1.3"/>
+          <rect x="-2" y="3" width="88" height="4.5" fill="#475A75"/>
           <g>
-            <rect x="7" y="13" width="10" height="7" fill="#F3C669"/><rect x="22" y="13" width="10" height="7" fill="#182231"/><rect x="37" y="13" width="10" height="7" fill="#F3C669"/><rect x="52" y="13" width="10" height="7" fill="#182231"/>
-            <rect x="7" y="24" width="10" height="7" fill="#182231"/><rect x="22" y="24" width="10" height="7" fill="#F3C669"/><rect x="37" y="24" width="10" height="7" fill="#182231"/><rect x="52" y="24" width="10" height="7" fill="#E89A46"/>
-            <rect x="7" y="35" width="10" height="7" fill="#F3C669"/><rect x="22" y="35" width="10" height="7" fill="#182231"/><rect x="37" y="35" width="10" height="7" fill="#F3C669"/><rect x="52" y="35" width="10" height="7" fill="#182231"/>
-            <rect x="7" y="46" width="10" height="7" fill="#182231"/><rect x="22" y="46" width="10" height="7" fill="#F3C669"/><rect x="37" y="46" width="10" height="7" fill="#182231"/><rect x="52" y="46" width="10" height="7" fill="#182231"/>
-            <rect x="7" y="57" width="10" height="7" fill="#182231"/><rect x="22" y="57" width="10" height="7" fill="#182231"/><rect x="37" y="57" width="10" height="7" fill="#F3C669"/>
+            <rect x="7" y="13" width="10" height="7" fill="#F6C85F"/><rect x="22" y="13" width="10" height="7" fill="#182231"/><rect x="37" y="13" width="10" height="7" fill="#F6C85F"/><rect x="52" y="13" width="10" height="7" fill="#182231"/>
+            <rect x="7" y="24" width="10" height="7" fill="#182231"/><rect x="22" y="24" width="10" height="7" fill="#F6C85F"/><rect x="37" y="24" width="10" height="7" fill="#182231"/><rect x="52" y="24" width="10" height="7" fill="#EA9B42"/>
+            <rect x="7" y="35" width="10" height="7" fill="#F6C85F"/><rect x="22" y="35" width="10" height="7" fill="#182231"/><rect x="37" y="35" width="10" height="7" fill="#F6C85F"/><rect x="52" y="35" width="10" height="7" fill="#182231"/>
+            <rect x="7" y="46" width="10" height="7" fill="#182231"/><rect x="22" y="46" width="10" height="7" fill="#F6C85F"/><rect x="37" y="46" width="10" height="7" fill="#182231"/><rect x="52" y="46" width="10" height="7" fill="#182231"/>
+            <rect x="7" y="57" width="10" height="7" fill="#182231"/><rect x="22" y="57" width="10" height="7" fill="#182231"/><rect x="37" y="57" width="10" height="7" fill="#F6C85F"/>
           </g>
-          <path d="M68 6 L96 6 L92 18 L80 26 L98 38 L86 50 L108 68 L68 68 Z" fill="#1B2433"/>
-          <path d="M68 6 L75 18 L66 32 L78 46 L72 68 L112 68 L102 52 L92 56 L84 40 L90 28 L79 14 Z" fill="#0F1722"/>
-          <circle cx="88" cy="40" r="25" fill="url(#blast)"/>
-          <polygon points="68,68 84,53 98,57 116,68" fill="#4B5563"/>
-          <polygon points="74,68 88,58 104,68" fill="#374151"/>
+          <path d="M68 6 L98 6 L93 18 L81 27 L99 40 L87 52 L112 70 L68 70 Z" fill="#182230"/>
+          <circle cx="90" cy="40" r="26" fill="url(#uaBlast)"/>
+          <polygon points="68,70 85,54 100,58 118,70" fill="#525D6E"/>
         </g>
-        <path d="M268 48 Q260 28 278 14 Q296 2 318 8 L318 36 Q298 36 286 50 Z" fill="#3B4554" opacity="0.65"/>
+        <path d="M268 48 Q262 28 280 14 Q298 2 320 8 L320 36 Q298 36 286 50 Z" fill="#445063" opacity="0.72"/>
       </svg>`;
 
     case 'bahrain':
-      return `<svg viewBox="0 0 320 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      return `<svg viewBox="0 0 320 104" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="bhSky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#192136"/>
-            <stop offset="56%" stop-color="#4C374A"/>
-            <stop offset="100%" stop-color="#CC6E44"/>
+            <stop offset="0%" stop-color="#1E2B45"/>
+            <stop offset="56%" stop-color="#6A4554"/>
+            <stop offset="100%" stop-color="#E08B52"/>
           </linearGradient>
-          <linearGradient id="bhWater" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#1E354E"/>
-            <stop offset="100%" stop-color="#0D1A29"/>
+          <linearGradient id="bhSea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1F3B57"/>
+            <stop offset="100%" stop-color="#0E1D2E"/>
           </linearGradient>
-          <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0%" stop-color="#FFF0A5"/>
-            <stop offset="45%" stop-color="#F48C06"/>
-            <stop offset="100%" stop-color="#B31B24"/>
+          <linearGradient id="bhFlame" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#FFF2A8"/>
+            <stop offset="48%" stop-color="#F48C06"/>
+            <stop offset="100%" stop-color="#C1121F"/>
           </linearGradient>
         </defs>
-        <rect width="320" height="100" fill="url(#bhSky)"/>
-        <rect x="0" y="76" width="320" height="24" fill="url(#bhWater)"/>
-        <rect x="0" y="71" width="320" height="6" fill="#3A3132"/>
-        <!-- Smoke plumes -->
-        <path d="M170 55 Q182 28 214 18 Q250 6 294 14 L300 32 Q258 26 228 38 Q202 48 186 59 Z" fill="#2A2730" opacity="0.74"/>
-        <path d="M134 59 Q146 37 170 31 Q190 27 212 35 L206 47 Q180 45 154 61 Z" fill="#3C3540" opacity="0.56"/>
-        <!-- Sitra industrial storage tanks & fire -->
-        <g transform="translate(110,37)">
-          <rect x="0" y="14" width="34" height="21" rx="2" fill="#DDD7CB" stroke="#2B2D42" stroke-width="1"/>
-          <rect x="42" y="10" width="42" height="25" rx="2" fill="#D0C9BD" stroke="#2B2D42" stroke-width="1"/>
-          <rect x="92" y="16" width="32" height="19" rx="2" fill="#DDD7CB" stroke="#2B2D42" stroke-width="1"/>
-          <rect x="132" y="2" width="6" height="33" fill="#525B6B"/>
-          <rect x="144" y="8" width="5" height="27" fill="#525B6B"/>
-          <path d="M52 10 Q58 -11 66 2 Q72 -15 78 6 Q82 -2 82 10 Z" fill="url(#flame)"/>
-          <path d="M10 14 Q15 2 20 8 Q24 0 27 14 Z" fill="url(#flame)" opacity="0.86"/>
+        <rect width="320" height="104" fill="url(#bhSky)"/>
+        <rect x="0" y="79" width="320" height="25" fill="url(#bhSea)"/>
+        <rect x="0" y="73" width="320" height="7" fill="#3F3435"/>
+        <path d="M168 57 Q182 28 216 17 Q254 5 298 14 L304 34 Q260 27 228 40 Q202 50 184 61 Z" fill="#2A2630" opacity="0.78"/>
+        <!-- Sitra storage tanks & blaze -->
+        <g transform="translate(114,38)">
+          <rect x="0" y="15" width="34" height="21" rx="2" fill="#E9E3D6" stroke="#242938" stroke-width="1.2"/>
+          <rect x="42" y="10" width="44" height="26" rx="2" fill="#DDD6C7" stroke="#242938" stroke-width="1.2"/>
+          <rect x="94" y="17" width="32" height="19" rx="2" fill="#E9E3D6" stroke="#242938" stroke-width="1.2"/>
+          <rect x="134" y="2" width="6" height="34" fill="#4E5869"/>
+          <rect x="146" y="8" width="5" height="28" fill="#4E5869"/>
+          <path d="M51 10 Q58 -12 67 2 Q74 -16 80 6 Q84 -2 84 10 Z" fill="url(#bhFlame)"/>
+          <path d="M9 15 Q15 1 21 8 Q25 -1 28 15 Z" fill="url(#bhFlame)" opacity="0.9"/>
         </g>
-        <ellipse cx="174" cy="86" rx="36" ry="5.5" fill="#F48C06" opacity="0.36"/>
-        <!-- Air defence radar dish silhouette -->
-        <g transform="translate(32,41)">
-          <rect x="10" y="18" width="28" height="12" rx="1.5" fill="#465261" stroke="#182230" stroke-width="1"/>
-          <circle cx="16" cy="31" r="4" fill="#182230"/><circle cx="32" cy="31" r="4" fill="#182230"/>
-          <g transform="rotate(-30 26 14)">
-            <rect x="16" y="6" width="22" height="10" rx="2" fill="#758494" stroke="#182230" stroke-width="1"/>
+        <ellipse cx="180" cy="89" rx="40" ry="6" fill="#F48C06" opacity="0.4"/>
+        <!-- Radar battery silhouette & contested waves -->
+        <g transform="translate(28,42)">
+          <rect x="8" y="19" width="30" height="13" rx="1.5" fill="#4C5A6B" stroke="#182230" stroke-width="1.1"/>
+          <circle cx="15" cy="33" r="4.2" fill="#182230"/><circle cx="32" cy="33" r="4.2" fill="#182230"/>
+          <g transform="rotate(-28 26 14)">
+            <rect x="15" y="6" width="24" height="11" rx="2" fill="#8999AB" stroke="#182230" stroke-width="1.1"/>
           </g>
-          <path d="M38 6 A14 14 0 0 1 46 18" fill="none" stroke="#9CE0E0" stroke-width="1.3" opacity="0.85"/>
-          <path d="M42 1 A22 22 0 0 1 54 18" fill="none" stroke="#9CE0E0" stroke-width="1.1" opacity="0.55"/>
+          <path d="M40 5 A15 15 0 0 1 48 19" fill="none" stroke="#9CEAEF" stroke-width="1.6"/>
+          <path d="M45 0 A23 23 0 0 1 57 19" fill="none" stroke="#9CEAEF" stroke-width="1.3" opacity="0.68"/>
         </g>
-        <path d="M308 16 Q216 4 156 32" fill="none" stroke="#FFD166" stroke-width="1.3" stroke-dasharray="4 3"/>
-        <path d="M68 43 Q132 18 198 18" fill="none" stroke="#7CE8E8" stroke-width="1.2" stroke-dasharray="3 3"/>
-        <circle cx="198" cy="18" r="3.8" fill="#FFF3B0"/>
+        <path d="M310 15 Q218 4 156 32" fill="none" stroke="#FFD166" stroke-width="1.6" stroke-dasharray="4 3"/>
+        <path d="M68 44 Q134 18 202 18" fill="none" stroke="#85EFEF" stroke-width="1.4" stroke-dasharray="3.5 3"/>
+        <circle cx="202" cy="18" r="4.2" fill="#FFF3B0"/>
       </svg>`;
 
     default:
@@ -192,204 +177,207 @@ export function renderHeroArt(key) {
 export function renderCardArt(key) {
   switch (key) {
     case 'hongkong':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#DCE5EE"/>
-        <g fill="#7C92AB">
-          <rect x="6" y="22" width="10" height="28"/><rect x="18" y="14" width="12" height="36"/>
-          <rect x="32" y="26" width="9" height="24"/><rect x="116" y="18" width="11" height="32"/>
-          <rect x="130" y="11" width="14" height="39"/><polygon points="130,11 137,2 144,11"/>
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="156" height="54" fill="#DCE8F2"/>
+        <g fill="#7A94B0">
+          <rect x="6" y="22" width="11" height="32"/><rect x="19" y="14" width="13" height="40"/>
+          <rect x="34" y="28" width="9" height="26"/><rect x="116" y="19" width="11" height="35"/>
+          <rect x="130" y="11" width="15" height="43"/><polygon points="130,11 137.5,2 145,11"/>
         </g>
-        <rect x="52" y="24" width="52" height="26" rx="2" fill="#1C3557" stroke="#0E1D33" stroke-width="1"/>
-        <rect x="62" y="27" width="32" height="3.5" rx="1" fill="#0B1526"/>
-        <g transform="rotate(-9 78 17)">
-          <rect x="65" y="5" width="26" height="23" rx="1" fill="#FFFDF7" stroke="#1C3557" stroke-width="1"/>
-          <path d="M71 16 L76 21 L86 10" fill="none" stroke="#A61C24" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="52" y="27" width="54" height="27" rx="2" fill="#1C375A" stroke="#0E1E36" stroke-width="1.2"/>
+        <rect x="62" y="30" width="34" height="4" rx="1" fill="#0A1424"/>
+        <g transform="rotate(-9 79 18)">
+          <rect x="65" y="5" width="28" height="25" rx="1.2" fill="#FFFFFF" stroke="#1C375A" stroke-width="1.2"/>
+          <path d="M71 17 L77 23 L88 10" fill="none" stroke="#B81D24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
       </svg>`;
 
     case 'cricket':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#2A7B45"/>
-        <!-- Basin Reserve sunlit oval stripes -->
-        <rect x="0" y="0" width="156" height="12" fill="#22683A"/>
-        <polygon points="48,50 64,14 96,14 112,50" fill="#DCC695"/>
-        <line x1="60" y1="23" x2="100" y2="23" stroke="#FFFDF7" stroke-width="1.3"/>
-        <line x1="53" y1="42" x2="107" y2="42" stroke="#FFFDF7" stroke-width="1.3"/>
-        <!-- Wooden stumps & bails -->
-        <g stroke="#F8E9C5" stroke-width="2.2">
-          <line x1="74" y1="23" x2="74" y2="6"/><line x1="80" y1="23" x2="80" y2="6"/><line x1="86" y1="23" x2="86" y2="6"/>
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="156" height="54" fill="#2D864B"/>
+        <rect x="0" y="0" width="156" height="13" fill="#236F3D"/>
+        <polygon points="46,54 63,15 97,15 114,54" fill="#E3CE9E"/>
+        <line x1="59" y1="25" x2="101" y2="25" stroke="#FFFFFF" stroke-width="1.4"/>
+        <line x1="51" y1="45" x2="109" y2="45" stroke="#FFFFFF" stroke-width="1.4"/>
+        <g stroke="#FFF1CE" stroke-width="2.4">
+          <line x1="74" y1="25" x2="74" y2="6"/><line x1="80" y1="25" x2="80" y2="6"/><line x1="86" y1="25" x2="86" y2="6"/>
         </g>
-        <line x1="73" y1="6" x2="87" y2="6" stroke="#B87D3B" stroke-width="2"/>
-        <!-- Cricket bat silhouette + red leather ball -->
-        <g transform="rotate(28 42 32)">
-          <rect x="38" y="14" width="6.5" height="22" rx="1.2" fill="#E8CFA0" stroke="#7A5628" stroke-width="0.9"/>
-          <rect x="40" y="4" width="2.5" height="10" fill="#243447"/>
+        <line x1="72.5" y1="6" x2="87.5" y2="6" stroke="#B57B38" stroke-width="2.2"/>
+        <g transform="rotate(26 42 35)">
+          <rect x="38" y="16" width="7" height="24" rx="1.2" fill="#EED5A4" stroke="#755124" stroke-width="1"/>
+          <rect x="40" y="5" width="3" height="11" fill="#1E2F42"/>
         </g>
-        <circle cx="122" cy="24" r="8" fill="#A61C24" stroke="#5E0E13" stroke-width="1.1"/>
-        <path d="M116 21 Q122 24 128 27" fill="none" stroke="#F8E7C9" stroke-width="1.1" stroke-dasharray="1.6 1.2"/>
+        <circle cx="124" cy="27" r="9.5" fill="#B31B24" stroke="#5E0E13" stroke-width="1.2"/>
+        <path d="M117 23 Q124 27 131 31" fill="none" stroke="#FFF1CE" stroke-width="1.2" stroke-dasharray="1.8 1.2"/>
       </svg>`;
 
     case 'f1':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#121828"/>
-        <rect x="10" y="7" width="14" height="24" fill="#232E47"/><rect x="12" y="11" width="10" height="2" fill="#E63946"/>
-        <rect x="30" y="4" width="16" height="27" fill="#2A3654"/><rect x="33" y="9" width="10" height="2" fill="#F4D35E"/>
-        <rect x="96" y="8" width="18" height="23" fill="#232E47"/><rect x="99" y="13" width="12" height="2" fill="#4CC9F0"/>
-        <g transform="translate(124,4)">
-          <rect x="0" y="0" width="26" height="18" fill="#FFF"/>
-          <rect x="0" y="0" width="6.5" height="6" fill="#111"/><rect x="13" y="0" width="6.5" height="6" fill="#111"/>
-          <rect x="6.5" y="6" width="6.5" height="6" fill="#111"/><rect x="19.5" y="6" width="6.5" height="6" fill="#111"/>
-          <rect x="0" y="12" width="6.5" height="6" fill="#111"/><rect x="13" y="12" width="6.5" height="6" fill="#111"/>
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="156" height="54" fill="#131B2E"/>
+        <rect x="10" y="8" width="14" height="26" fill="#24314D"/><rect x="12" y="13" width="10" height="2.4" fill="#EF4444"/>
+        <rect x="30" y="4" width="17" height="30" fill="#2C3A5C"/><rect x="33" y="10" width="11" height="2.4" fill="#FACC15"/>
+        <rect x="92" y="8" width="19" height="26" fill="#24314D"/><rect x="95" y="14" width="13" height="2.4" fill="#38BDF8"/>
+        <g transform="translate(122,4)">
+          <rect x="0" y="0" width="28" height="20" fill="#FFF"/>
+          <rect x="0" y="0" width="7" height="6.7" fill="#111"/><rect x="14" y="0" width="7" height="6.7" fill="#111"/>
+          <rect x="7" y="6.7" width="7" height="6.7" fill="#111"/><rect x="21" y="6.7" width="7" height="6.7" fill="#111"/>
+          <rect x="0" y="13.3" width="7" height="6.7" fill="#111"/><rect x="14" y="13.3" width="7" height="6.7" fill="#111"/>
         </g>
-        <rect x="0" y="31" width="156" height="19" fill="#2B303A"/>
-        <line x1="0" y1="32" x2="156" y2="32" stroke="#E63946" stroke-width="1.5" stroke-dasharray="10 6"/>
-        <path d="M16 37 L32 28 L66 28 L86 32 L103 35 L103 39 L16 39 Z" fill="#1B3B6F"/>
-        <path d="M48 28 L64 28 L74 32 L46 32 Z" fill="#E63946"/>
-        <rect x="12" y="26" width="10" height="4" fill="#F4D35E"/>
-        <circle cx="32" cy="39" r="5.2" fill="#0B0D12" stroke="#9AA5B4" stroke-width="1.5"/>
-        <circle cx="86" cy="39" r="5.2" fill="#0B0D12" stroke="#9AA5B4" stroke-width="1.5"/>
+        <rect x="0" y="34" width="156" height="20" fill="#323844"/>
+        <line x1="0" y1="35" x2="156" y2="35" stroke="#EF4444" stroke-width="1.6" stroke-dasharray="10 6"/>
+        <path d="M18 41 L35 30 L72 30 L94 35 L112 38 L112 43 L18 43 Z" fill="#1D4382"/>
+        <path d="M52 30 L70 30 L81 35 L50 35 Z" fill="#E63946"/>
+        <rect x="14" y="28" width="11" height="4.5" fill="#FACC15"/>
+        <circle cx="35" cy="43" r="5.6" fill="#0B0D12" stroke="#B0BBC9" stroke-width="1.6"/>
+        <circle cx="94" cy="43" r="5.6" fill="#0B0D12" stroke="#B0BBC9" stroke-width="1.6"/>
       </svg>`;
 
-    case 'khartoum':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="sdSky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#4A5568"/><stop offset="100%" stop-color="#D4A373"/>
-          </linearGradient>
-        </defs>
-        <rect width="156" height="50" fill="url(#sdSky)"/>
-        <rect x="0" y="40" width="156" height="10" fill="#6E5239"/>
-        <rect x="58" y="17" width="46" height="23" fill="#E6EEF5" stroke="#2D3E50" stroke-width="1"/>
-        <rect x="58" y="17" width="46" height="5.5" fill="#3B82C4"/>
-        <rect x="64" y="26" width="6" height="6" fill="#2D3E50"/><rect x="74" y="26" width="6" height="6" fill="#2D3E50"/>
-        <rect x="84" y="26" width="6" height="6" fill="#2D3E50"/>
-        <path d="M94 17 L104 17 L104 30 L92 24 Z" fill="#262930"/>
-        <path d="M98 19 Q112 4 134 6 Q146 8 152 17 L138 24 Q118 17 104 26 Z" fill="#2D3138" opacity="0.72"/>
-        <rect x="18" y="28" width="28" height="12" fill="#8C6D4F"/>
-        <polygon points="118,12 128,9 124,14 128,17" fill="#1A202C"/>
+    case 'anfield':
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="156" height="54" fill="#1B2E48"/>
+        <path d="M6 17 L150 17 L142 29 L14 29 Z" fill="#B31B24"/>
+        <rect x="0" y="29" width="156" height="25" fill="#2E8548"/>
+        <line x1="78" y1="29" x2="78" y2="54" stroke="#FFFFFF" stroke-width="1.1" opacity="0.75"/>
+        <circle cx="78" cy="41.5" r="8" fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity="0.75"/>
+        <circle cx="20" cy="8" r="3.5" fill="#FEF08A"/><circle cx="136" cy="8" r="3.5" fill="#FEF08A"/>
+        <rect x="42" y="18" width="60" height="22" rx="2.5" fill="#0E1726" stroke="#F8FAFC" stroke-width="1.3"/>
+        <text x="72" y="33.5" text-anchor="middle" font-family="Noto Sans, Nimbus Sans, sans-serif" font-weight="800" font-size="13.5" fill="#FFFFFF">4 – 0</text>
+        <rect x="114" y="18" width="13" height="19" rx="1.5" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.3"/>
       </svg>`;
 
-    case 'cikande':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#231F26"/>
-        <path d="M36 24 Q56 2 94 6 Q128 2 146 19 L138 32 Q98 24 44 34 Z" fill="#4B444E" opacity="0.86"/>
-        <path d="M22 50 L22 26 L42 19 L42 26 L62 19 L62 26 L82 19 L82 26 L98 30 L108 50 Z" fill="#3E3A40" stroke="#18151A" stroke-width="1"/>
-        <path d="M46 50 Q52 25 60 36 Q68 21 76 36 Q82 27 86 50 Z" fill="#E85D04"/>
-        <path d="M54 50 Q60 34 68 40 Q74 31 78 50 Z" fill="#FAA307"/>
-        <path d="M126 30 Q106 16 78 32" fill="none" stroke="#90E0EF" stroke-width="2" stroke-dasharray="4 2"/>
-        <rect x="122" y="22" width="24" height="10" rx="1.5" fill="#C1121F"/>
-        <circle cx="128" cy="33" r="2.8" fill="#111"/><circle cx="140" cy="33" r="2.8" fill="#111"/>
+    case 'atp':
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="156" height="54" fill="#1E4E8C"/>
+        <!-- Turin indoor hard court perspective lines -->
+        <polygon points="8,54 32,20 124,20 148,54" fill="#2B6CB0" stroke="#FFFFFF" stroke-width="1.3"/>
+        <line x1="20" y1="36" x2="136" y2="36" stroke="#FFFFFF" stroke-width="1.1" opacity="0.9"/>
+        <line x1="78" y1="20" x2="78" y2="54" stroke="#FFFFFF" stroke-width="1" opacity="0.8"/>
+        <!-- Gleaming gold ATP Finals cup -->
+        <g transform="translate(65,7)">
+          <path d="M5 4 L21 4 L19 17 Q13 24 7 17 Z" fill="#F4C430" stroke="#6E4E05" stroke-width="1.1"/>
+          <path d="M5 7 Q0 7 0 12 Q0 16 6 16 M21 7 Q26 7 26 12 Q26 16 20 16" fill="none" stroke="#F4C430" stroke-width="1.7"/>
+          <rect x="11" y="21" width="4" height="7" fill="#D9A31E"/>
+          <rect x="6" y="28" width="14" height="4" rx="1" fill="#6E4E05"/>
+        </g>
+        <!-- Crisp tennis ball -->
+        <circle cx="124" cy="27" r="9.5" fill="#D4E157" stroke="#365314" stroke-width="1.2"/>
+        <path d="M118 20 Q124 27 118 34 M130 20 Q124 27 130 34" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
       </svg>`;
 
     case 'iranpower':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#121C2E"/>
-        <rect x="10" y="24" width="18" height="26" fill="#1E2B42"/>
-        <rect x="13" y="28" width="4" height="4" fill="#F4C95D"/><rect x="20" y="34" width="4" height="4" fill="#F4C95D"/>
-        <rect x="32" y="18" width="22" height="32" fill="#192438"/>
-        <rect x="36" y="22" width="4" height="4" fill="#F4C95D"/><rect x="44" y="28" width="4" height="4" fill="#0B121F"/>
-        <rect x="104" y="20" width="20" height="30" fill="#0B111C"/>
-        <rect x="128" y="26" width="22" height="24" fill="#090E18"/>
-        <g stroke="#7A8CA5" stroke-width="1.4" fill="none">
-          <path d="M68 50 L76 9 L84 50 M62 19 L90 19 M65 30 L87 30 M70 30 L82 19 M82 30 L70 19"/>
-          <path d="M0 17 Q36 25 62 19 M90 19 Q122 26 156 18" stroke-width="0.9" opacity="0.7"/>
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="78" height="54" fill="#314968"/>
+        <rect x="78" y="0" width="78" height="54" fill="#131E30"/>
+        <rect x="10" y="25" width="18" height="29" fill="#20324A"/>
+        <rect x="13" y="30" width="4.5" height="4.5" fill="#FDE047"/><rect x="20" y="37" width="4.5" height="4.5" fill="#FDE047"/>
+        <rect x="33" y="19" width="22" height="35" fill="#1B2A40"/>
+        <rect x="37" y="24" width="4.5" height="4.5" fill="#FDE047"/><rect x="45" y="31" width="4.5" height="4.5" fill="#FDE047"/>
+        <rect x="102" y="21" width="20" height="33" fill="#0B111C"/>
+        <rect x="126" y="27" width="22" height="27" fill="#090E18"/>
+        <g stroke="#9EB2C9" stroke-width="1.6" fill="none">
+          <path d="M68 54 L78 10 L88 54 M61 20 L95 20 M64 32 L92 32 M69 32 L87 20 M87 32 L69 20"/>
+          <path d="M0 18 Q36 27 61 20 M95 20 Q125 28 156 19" stroke-width="1" opacity="0.75"/>
         </g>
-        <path d="M138 10 A6 6 0 1 0 144 18 A4.5 4.5 0 1 1 138 10 Z" fill="#F4E3B2"/>
+        <polygon points="122,9 114,22 121,22 116,33 130,18 123,18" fill="#FACC15"/>
       </svg>`;
 
-    case 'nba':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#C98D4F"/>
-        <rect x="0" y="35" width="156" height="15" fill="#B5783A"/>
-        <line x1="0" y1="35" x2="156" y2="35" stroke="#FFFDF7" stroke-width="1.2"/>
-        <!-- Arena rafters glow -->
-        <rect x="0" y="0" width="156" height="12" fill="#1E293B"/>
-        <!-- Backboard & rim -->
-        <rect x="52" y="5" width="42" height="23" rx="1.5" fill="#F8FAFC" stroke="#1E293B" stroke-width="1.4"/>
-        <rect x="64" y="12" width="18" height="11" fill="none" stroke="#C81E2B" stroke-width="1.5"/>
-        <line x1="63" y1="23" x2="83" y2="23" stroke="#E85D04" stroke-width="2.5"/>
-        <path d="M65 24 L68 36 L78 36 L81 24 M68 24 L75 36 M78 24 L71 36" fill="none" stroke="#FFF" stroke-width="1"/>
-        <!-- Arcing basketball swish -->
-        <path d="M126 14 Q102 4 76 19" fill="none" stroke="#FDE68A" stroke-width="1.3" stroke-dasharray="3 2.5"/>
-        <circle cx="122" cy="19" r="10.5" fill="#D95D24" stroke="#3D1B09" stroke-width="1.2"/>
-        <path d="M111.5 19 L132.5 19 M122 8.5 L122 29.5" stroke="#3D1B09" stroke-width="0.9"/>
+    case 'khartoum':
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sdSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#6B7C91"/><stop offset="100%" stop-color="#E2B483"/>
+          </linearGradient>
+        </defs>
+        <rect width="156" height="54" fill="url(#sdSky)"/>
+        <rect x="0" y="42" width="156" height="12" fill="#785A3F"/>
+        <rect x="52" y="18" width="52" height="24" fill="#F4F8FB" stroke="#23374D" stroke-width="1.2"/>
+        <rect x="52" y="18" width="52" height="7" fill="#2B7AC9"/>
+        <text x="72" y="24" text-anchor="middle" font-family="Noto Sans, sans-serif" font-weight="800" font-size="6.2" fill="#FFFFFF">UN</text>
+        <rect x="58" y="29" width="7" height="7" fill="#2B3E52"/><rect x="69" y="29" width="7" height="7" fill="#2B3E52"/><rect x="80" y="29" width="7" height="7" fill="#2B3E52"/>
+        <path d="M92 18 L104 18 L104 33 L90 26 Z" fill="#272B33"/>
+        <path d="M96 20 Q112 4 134 6 Q148 9 154 19 L138 26 Q118 18 104 28 Z" fill="#323740" opacity="0.78"/>
+        <rect x="14" y="30" width="28" height="12" fill="#9A7857"/>
+        <polygon points="118,12 130,8 125,14 130,18" fill="#18202C"/>
+      </svg>`;
+
+    case 'cikande':
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ckSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4A414A"/><stop offset="100%" stop-color="#8A6454"/>
+          </linearGradient>
+        </defs>
+        <rect width="156" height="54" fill="url(#ckSky)"/>
+        <path d="M32 26 Q54 4 94 8 Q128 4 148 22 L138 35 Q98 26 40 37 Z" fill="#3D3640" opacity="0.88"/>
+        <path d="M20 54 L20 27 L41 20 L41 27 L62 20 L62 27 L83 20 L83 27 L100 32 L110 54 Z" fill="#38343D" stroke="#19161D" stroke-width="1.1"/>
+        <path d="M46 54 Q52 25 61 37 Q69 19 78 37 Q84 27 88 54 Z" fill="#F05E07"/>
+        <path d="M55 54 Q61 35 69 41 Q76 31 80 54 Z" fill="#FDE047"/>
+        <path d="M126 32 Q106 16 78 33" fill="none" stroke="#90E0EF" stroke-width="2.2" stroke-dasharray="4 2"/>
+        <rect x="116" y="28" width="30" height="12" rx="1.8" fill="#D61F26" stroke="#FFFFFF" stroke-width="0.9"/>
+        <circle cx="123" cy="41" r="3.2" fill="#111"/><circle cx="139" cy="41" r="3.2" fill="#111"/>
       </svg>`;
 
     case 'fukushima':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#5B728B"/>
-        <path d="M0 35 Q42 28 82 35 Q120 41 156 31 L156 50 L0 50 Z" fill="#F2F7FB"/>
-        <g fill="#2C4257">
-          <polygon points="24,39 34,13 44,39"/><polygon points="48,40 56,19 64,40"/>
-          <polygon points="116,38 128,11 140,38"/>
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="156" height="54" fill="#6F89A5"/>
+        <path d="M0 37 Q42 29 82 37 Q122 44 156 33 L156 54 L0 54 Z" fill="#F7FBFF"/>
+        <g fill="#264057">
+          <polygon points="22,42 33,13 44,42"/><polygon points="48,43 57,20 66,43"/>
+          <polygon points="116,41 129,11 142,41"/>
         </g>
-        <g fill="#FFFFFF" opacity="0.92">
-          <polygon points="29,26 34,13 39,26"/><polygon points="122,24 128,11 134,24"/>
+        <g fill="#FFFFFF" opacity="0.95">
+          <polygon points="27.5,27 33,13 38.5,27"/><polygon points="122.5,25 129,11 135.5,25"/>
         </g>
-        <g transform="translate(82,17)">
-          <rect x="6" y="14" width="2.5" height="17" fill="#334155"/>
-          <polygon points="7,0 16,13 -2,13" fill="#1D4E89" stroke="#FFF" stroke-width="1.2"/>
-          <text x="7" y="11" text-anchor="middle" font-family="Nimbus Sans Narrow, sans-serif" font-weight="700" font-size="6.5" fill="#FFF">459</text>
+        <g transform="translate(80,18)">
+          <rect x="7" y="15" width="2.8" height="18" fill="#334155"/>
+          <polygon points="8.4,0 19,15 -2,15" fill="#1A4F8B" stroke="#FFFFFF" stroke-width="1.3"/>
+          <text x="8.4" y="12.5" text-anchor="middle" font-family="Noto Sans, sans-serif" font-weight="800" font-size="6.4" fill="#FFFFFF">459</text>
         </g>
-        <g fill="#FFFFFF" opacity="0.9">
-          <circle cx="14" cy="11" r="1.4"/><circle cx="46" cy="9" r="1.2"/><circle cx="72" cy="12" r="1.5"/>
-          <circle cx="102" cy="8" r="1.3"/><circle cx="144" cy="15" r="1.4"/><circle cx="62" cy="26" r="1.2"/>
-          <circle cx="106" cy="24" r="1.4"/><circle cx="18" cy="24" r="1.2"/>
+        <g fill="#FFFFFF">
+          <circle cx="15" cy="12" r="1.6"/><circle cx="46" cy="9" r="1.4"/><circle cx="72" cy="12" r="1.7"/>
+          <circle cx="104" cy="9" r="1.5"/><circle cx="145" cy="16" r="1.6"/><circle cx="64" cy="27" r="1.4"/>
         </g>
       </svg>`;
 
     case 'gaza':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#7D8790"/>
-        <path d="M0 39 L0 19 L18 19 L22 26 L36 17 L46 28 L68 21 L74 30 L108 19 L116 26 L138 15 L156 23 L156 39 Z" fill="#525B63"/>
-        <rect x="0" y="39" width="156" height="11" fill="#3C4248"/>
-        <g transform="translate(46,22)">
-          <rect x="0" y="4" width="54" height="15" rx="2" fill="#F5F5F2" stroke="#222831" stroke-width="1"/>
-          <path d="M54 8 L66 8 L70 14 L70 19 L54 19 Z" fill="#E6E6E0" stroke="#222831" stroke-width="1"/>
-          <rect x="23" y="7" width="3" height="9" fill="#B31B24"/><rect x="20" y="10" width="9" height="3" fill="#B31B24"/>
-          <circle cx="14" cy="20" r="4" fill="#1F242B"/><circle cx="58" cy="20" r="4" fill="#1F242B"/>
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="156" height="54" fill="#919CA6"/>
+        <path d="M0 41 L0 20 L18 20 L23 27 L38 18 L48 29 L70 21 L76 31 L110 19 L118 27 L140 16 L156 24 L156 41 Z" fill="#5D6770"/>
+        <rect x="0" y="41" width="156" height="13" fill="#40474F"/>
+        <g transform="translate(42,23)">
+          <rect x="0" y="4" width="56" height="16" rx="2" fill="#FFFFFF" stroke="#1F252E" stroke-width="1.2"/>
+          <path d="M56 8 L69 8 L73 15 L73 20 L56 20 Z" fill="#EBEBE6" stroke="#1F252E" stroke-width="1.2"/>
+          <rect x="24" y="7" width="3.5" height="10" fill="#B81D24"/><rect x="20.5" y="10.5" width="10.5" height="3.5" fill="#B81D24"/>
+          <circle cx="15" cy="21" r="4.2" fill="#1B2026"/><circle cx="60" cy="21" r="4.2" fill="#1B2026"/>
         </g>
-        <path d="M104 22 Q112 9 128 9 Q138 9 144 15 L132 22 Z" fill="#2E3338" opacity="0.6"/>
-      </svg>`;
-
-    case 'anfield':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#142338"/>
-        <path d="M6 17 L150 17 L142 28 L14 28 Z" fill="#9B1C24"/>
-        <rect x="0" y="28" width="156" height="22" fill="#2B7A43"/>
-        <line x1="78" y1="28" x2="78" y2="50" stroke="#FFFFFF" stroke-width="1" opacity="0.7"/>
-        <circle cx="78" cy="39" r="7.5" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.7"/>
-        <circle cx="22" cy="8" r="3" fill="#FEF08A"/><circle cx="134" cy="8" r="3" fill="#FEF08A"/>
-        <rect x="44" y="18" width="54" height="19" rx="2" fill="#0F172A" stroke="#E2E8F0" stroke-width="1"/>
-        <text x="71" y="31" text-anchor="middle" font-family="Nimbus Sans Narrow, sans-serif" font-weight="700" font-size="11.5" fill="#FFFFFF">LIV 2–0</text>
-        <rect x="112" y="17" width="11" height="16" rx="1.5" fill="#DC2626" stroke="#FFF" stroke-width="1"/>
+        <path d="M106 23 Q115 8 132 8 Q143 8 148 16 L136 24 Z" fill="#32383F" opacity="0.65"/>
       </svg>`;
 
     case 'bolsonaro':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#11222C"/>
-        <g stroke="#1E3A47" stroke-width="0.6">
-          <line x1="0" y1="13" x2="156" y2="13"/><line x1="0" y1="26" x2="156" y2="26"/><line x1="0" y1="39" x2="156" y2="39"/>
-          <line x1="30" y1="0" x2="30" y2="50"/><line x1="60" y1="0" x2="60" y2="50"/><line x1="90" y1="0" x2="90" y2="50"/><line x1="120" y1="0" x2="120" y2="50"/>
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="156" height="54" fill="#EAF4F2"/>
+        <g stroke="#CBE0DC" stroke-width="0.8">
+          <line x1="0" y1="14" x2="156" y2="14"/><line x1="0" y1="28" x2="156" y2="28"/><line x1="0" y1="42" x2="156" y2="42"/>
+          <line x1="30" y1="0" x2="30" y2="54"/><line x1="60" y1="0" x2="60" y2="54"/><line x1="90" y1="0" x2="90" y2="54"/><line x1="120" y1="0" x2="120" y2="54"/>
         </g>
-        <path d="M6 29 L30 29 L36 23 L42 35 L49 12 L56 38 L62 29 L88 29 L94 23 L100 34 L106 14 L112 37 L118 29 L150 29" fill="none" stroke="#4ADE80" stroke-width="2.1" stroke-linejoin="round"/>
-        <rect x="128" y="6" width="20" height="20" rx="3" fill="#B31B24"/>
-        <rect x="136" y="10" width="4" height="12" fill="#FFF"/><rect x="132" y="14" width="12" height="4" fill="#FFF"/>
+        <path d="M6 31 L28 31 L35 24 L41 38 L49 12 L56 41 L63 31 L88 31 L95 24 L101 37 L108 14 L115 40 L122 31 L150 31" fill="none" stroke="#15803D" stroke-width="2.5" stroke-linejoin="round"/>
+        <rect x="125" y="6" width="22" height="22" rx="3" fill="#B81D24"/>
+        <rect x="134" y="10" width="4" height="14" fill="#FFFFFF"/><rect x="129" y="15" width="14" height="4" fill="#FFFFFF"/>
       </svg>`;
 
     case 'seoul':
-      return `<svg viewBox="0 0 156 50" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="156" height="50" fill="#2A3E59"/>
-        <rect x="20" y="9" width="38" height="33" rx="1.5" fill="#FBF8F0" stroke="#152233" stroke-width="1"/>
-        <rect x="26" y="15" width="22" height="2.5" fill="#475569"/>
-        <rect x="26" y="21" width="26" height="2" fill="#94A3B8"/>
-        <rect x="26" y="26" width="20" height="2" fill="#94A3B8"/>
-        <circle cx="47" cy="31" r="6" fill="#B31B24"/>
-        <text x="47" y="34" text-anchor="middle" font-family="Noto Sans Display, sans-serif" font-weight="700" font-size="7" fill="#FFF">AI</text>
-        <polygon points="88,50 94,24 126,24 132,50" fill="#18273B" stroke="#94A3B8" stroke-width="0.9"/>
-        <rect x="90" y="20" width="40" height="4.5" fill="#CBD5E1"/>
-        <path d="M104 20 Q104 11 112 11" fill="none" stroke="#E2E8F0" stroke-width="1.6"/>
-        <circle cx="113" cy="11" r="2.2" fill="#E2E8F0"/>
+      return `<svg viewBox="0 0 156 54" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="156" height="54" fill="#D9E4EF"/>
+        <rect x="20" y="10" width="40" height="36" rx="1.5" fill="#FFFFFF" stroke="#1B2D45" stroke-width="1.3"/>
+        <rect x="26" y="16" width="24" height="3" fill="#334155"/>
+        <rect x="26" y="23" width="28" height="2.2" fill="#94A3B8"/>
+        <rect x="26" y="29" width="22" height="2.2" fill="#94A3B8"/>
+        <circle cx="48" cy="34" r="7" fill="#B81D24"/>
+        <text x="48" y="37" text-anchor="middle" font-family="Noto Sans, sans-serif" font-weight="800" font-size="7.5" fill="#FFFFFF">AI</text>
+        <polygon points="88,54 94,25 128,25 134,54" fill="#1E3552" stroke="#0F1D30" stroke-width="1"/>
+        <rect x="90" y="21" width="42" height="5" fill="#476282"/>
+        <path d="M105 21 Q105 11 114 11" fill="none" stroke="#1E3552" stroke-width="1.8"/>
+        <circle cx="115" cy="11" r="2.6" fill="#1E3552"/>
       </svg>`;
 
     default:
@@ -397,49 +385,48 @@ export function renderCardArt(key) {
   }
 }
 
-// Equirectangular projection helper for 296x232 map viewport (lon -170..180, lat 74..-56)
+// Equirectangular projection for 296x238 map viewport (lon -168..182, lat 74..-56)
 function proj(lon, lat) {
-  const x = ((lon + 170) / 350) * 296;
-  const y = ((74 - lat) / 130) * 232;
+  const x = ((lon + 168) / 350) * 296;
+  const y = ((74 - lat) / 130) * 238;
   return [x, y];
 }
 
-// Clean hand-authored minimalist editorial vector continents + collision-free numbered pins (1..15)
+// Crisp Economist-style light editorial vector atlas with continuous Eurasia and zero-overlap pins (1..15)
 export function renderWorldMap(allMappedStories) {
-  // Precision collision-free nudges verified mathematically (min pin separation >= 16.5px)
   const NUDGE = {
-    1: [-15, -3], // Antalya
-    2: [2, -10],  // Kyiv/Dymer
-    3: [10, 8],   // Bahrain
-    4: [-4, 6],   // Hong Kong
-    5: [-4, -3],  // Wellington
-    6: [-6, -2],  // Las Vegas
-    7: [-3, 12],  // Khartoum
-    8: [-2, 4],   // Cikande Indonesia
-    9: [16, -7],  // Tehran
-    10: [8, 6],   // San Antonio
-    11: [11, -3], // Fukushima
-    12: [-10, 12],// Gaza
-    13: [-7, -4], // Liverpool
-    14: [0, 0],   // Brasília
-    15: [-3, -9], // Seoul
+    1: [-9, -1],   // Antalya
+    2: [3, -12],   // Kyiv/Dymer
+    3: [12, 8],    // Bahrain
+    4: [-5, 6],    // Hong Kong
+    5: [-4, -3],   // Wellington
+    6: [-3, -2],   // Las Vegas
+    7: [-12, -8],  // Liverpool
+    8: [-10, 6],   // Turin
+    9: [17, -7],   // Tehran
+    10: [-2, 12],  // Khartoum
+    11: [-2, 4],   // Cikande Indonesia
+    12: [11, -3],  // Fukushima
+    13: [-6, 13],  // Gaza
+    14: [0, 0],    // Brasília
+    15: [-3, -10], // Seoul
   };
 
   const placed = allMappedStories.map((s) => {
     const [bx, by] = proj(s.lon, s.lat);
     const [dx, dy] = NUDGE[s.id] || [0, 0];
     const px = Math.max(9, Math.min(287, bx + dx));
-    const py = Math.max(9, Math.min(223, by + dy));
+    const py = Math.max(9, Math.min(229, by + dy));
     return { s, bx, by, dx, dy, px, py };
   });
 
-  // Verify zero pin collisions
+  // Strict mathematical zero-collision guard across all 15 pins
   for (let i = 0; i < placed.length; i++) {
     for (let j = i + 1; j < placed.length; j++) {
       const a = placed[i];
       const b = placed[j];
       const dist = Math.hypot(a.px - b.px, a.py - b.py);
-      const minAllowed = (a.s.id <= 3 ? 7.6 : 6.4) + (b.s.id <= 3 ? 7.6 : 6.4) + 1.8;
+      const minAllowed = (a.s.id <= 3 ? 7.6 : 6.4) + (b.s.id <= 3 ? 7.6 : 6.4) + 1.5;
       if (dist < minAllowed) {
         throw new Error(`Map pin collision between #${a.s.id} and #${b.s.id}: dist=${dist.toFixed(1)} < ${minAllowed.toFixed(1)}`);
       }
@@ -450,51 +437,94 @@ export function renderWorldMap(allMappedStories) {
     .map(({ s, bx, by, dx, dy, px, py }) => {
       const isHero = s.id <= 3;
       const r = isHero ? 7.6 : 6.4;
-      const fill = isHero ? '#B31B24' : '#D13438';
-      const stroke = isHero ? '#FFF7E0' : '#FFFFFF';
+      const fill = isHero ? '#9B1C24' : '#C92A30';
+      const stroke = isHero ? '#FFF8E7' : '#FFFFFF';
       const leader =
         Math.hypot(dx, dy) > 7
-          ? `<line x1="${bx.toFixed(1)}" y1="${by.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="#F4D35E" stroke-width="0.95" opacity="0.88"/>`
+          ? `<line x1="${bx.toFixed(1)}" y1="${by.toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="#6E2428" stroke-width="0.95" opacity="0.85"/><circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="1.6" fill="#6E2428"/>`
           : '';
       return `${leader}<g>
-        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${isHero ? 1.45 : 1.0}"/>
-        <text x="${px.toFixed(1)}" y="${(py + 2.8).toFixed(1)}" text-anchor="middle" font-family="Nimbus Sans Narrow, Noto Sans Display, sans-serif" font-weight="700" font-size="${isHero ? 8.6 : 7.8}" fill="#FFFFFF">${s.id}</text>
+        <circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${isHero ? 1.5 : 1.0}"/>
+        <text x="${px.toFixed(1)}" y="${(py + 2.8).toFixed(1)}" text-anchor="middle" font-family="Noto Sans, Nimbus Sans, sans-serif" font-weight="700" font-size="${isHero ? 8.4 : 7.5}" fill="#FFFFFF">${s.id}</text>
       </g>`;
     })
     .join('\n');
 
-  return `<svg viewBox="0 0 296 232" width="296" height="232" xmlns="http://www.w3.org/2000/svg" style="display:block;">
-    <rect width="296" height="232" rx="2" fill="#13233A"/>
-    <g stroke="#223A59" stroke-width="0.55">
-      <line x1="0" y1="58" x2="296" y2="58"/><line x1="0" y1="116" x2="296" y2="116"/>
-      <line x1="0" y1="174" x2="296" y2="174"/>
-      <line x1="74" y1="0" x2="74" y2="232"/><line x1="148" y1="0" x2="148" y2="232"/><line x1="222" y1="0" x2="222" y2="232"/>
+  const poly = (pts) =>
+    'M' +
+    pts
+      .map(([lon, lat]) => {
+        const [x, y] = proj(lon, lat);
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      })
+      .join(' L') +
+    ' Z';
+
+  const continents = [
+    // North America + Central America
+    [[-166,65],[-155,71],[-135,70],[-115,69],[-95,68],[-82,63],[-78,53],[-64,58],[-55,51],[-64,44],[-70,41],[-76,35],[-81,25],[-83,30],[-90,29],[-97,26],[-96,19],[-88,21],[-84,10],[-78,8],[-83,9],[-92,15],[-105,20],[-112,28],[-117,32],[-124,42],[-126,50],[-137,59],[-152,60],[-162,56]],
+    // Greenland
+    [[-46,60],[-34,68],[-20,73],[-38,74],[-58,72],[-54,64]],
+    // Caribbean
+    [[-84,22],[-75,20],[-77,22],[-83,23]],
+    // South America
+    [[-78,9],[-72,12],[-61,10],[-50,1],[-35,-6],[-38,-15],[-42,-23],[-52,-33],[-63,-41],[-68,-54],[-74,-52],[-73,-40],[-71,-30],[-71,-18],[-81,-5],[-79,2]],
+    // UK & Ireland
+    [[-6,50],[-2,51],[1,53],[-3,58],[-6,57],[-5,53]],
+    // Continuous Eurasia (Iberia -> Western/Northern Europe -> Russia/Siberia -> East/South Asia -> Arabia -> Anatolia -> Balkans -> Italy)
+    [[-9,37],[-9,43],[-2,44],[-4,48],[2,51],[8,54],[10,57],[5,60],[12,66],[22,70],[32,69],[42,67],[60,69],[85,73],[115,73],[145,71],[172,66],[164,58],[156,51],[141,53],[136,44],[130,38],[129,35],[126,38],[122,40],[119,35],[122,30],[115,22],[108,16],[109,11],[104,10],[102,13],[100,6],[103,2],[100,14],[96,17],[92,21],[87,22],[80,14],[77,8],[73,19],[68,24],[61,25],[56,27],[51,26],[59,22],[52,16],[44,13],[39,22],[35,31],[36,37],[27,37],[27,41],[23,37],[20,40],[16,42],[13,45],[16,40],[14,38],[9,44],[4,43],[-1,38],[-5,36]],
+    // Africa
+    [[-17,15],[-12,28],[-5,36],[10,37],[12,33],[25,32],[33,31],[37,22],[43,12],[51,12],[49,5],[41,-2],[40,-15],[35,-25],[28,-33],[18,-34],[14,-22],[12,-6],[9,4],[2,6],[-8,5],[-15,11]],
+    // Madagascar
+    [[44,-25],[49,-13],[50,-16],[47,-25]],
+    // Sri Lanka
+    [[80,9],[82,7],[80,6]],
+    // Japan
+    [[130,31],[136,34],[141,38],[144,44],[140,42],[136,37],[131,34]],
+    // Taiwan
+    [[120.2,22],[121.8,25],[121.4,22]],
+    // Philippines
+    [[120,18],[123,14],[126,8],[122,7],[121,13]],
+    // Sumatra + Java
+    [[96,5],[105,-5],[114,-8],[114,-7],[105,-6],[95,3]],
+    // Borneo + Sulawesi
+    [[109,1],[117,6],[118,0],[115,-3],[110,-2]],
+    // New Guinea
+    [[132,-2],[141,-3],[150,-10],[146,-9],[136,-5]],
+    // Australia
+    [[114,-22],[122,-17],[130,-12],[136,-12],[142,-11],[146,-19],[153,-28],[150,-37],[141,-38],[135,-34],[125,-33],[115,-34],[113,-26]],
+    // Tasmania
+    [[145,-41],[148,-42],[146,-43]],
+    // New Zealand (North & South Islands)
+    [[173,-35],[178,-38],[175,-41],[173,-39]],
+    [[173,-41],[171,-44],[167,-46],[169,-43]],
+  ];
+
+  // Subtle inland seas (Black Sea & Caspian Sea) for genuine cartographic crispness
+  const inlandSeas = [
+    [[28,42],[33,46],[41,44],[41,41],[35,42]],
+    [[47,46],[53,46],[54,37],[49,38]],
+  ];
+
+  const landSvg = continents.map((ring) => `<path d="${poly(ring)}"/>`).join('');
+  const seaSvg = inlandSeas.map((ring) => `<path d="${poly(ring)}"/>`).join('');
+
+  const eqY = proj(0, 0)[1].toFixed(1);
+  const gridY = [60, 30, 0, -30].map((lat) => proj(0, lat)[1].toFixed(1));
+  const gridX = [-120, -60, 0, 60, 120].map((lon) => proj(lon, 0)[0].toFixed(1));
+
+  return `<svg viewBox="0 0 296 238" width="296" height="238" xmlns="http://www.w3.org/2000/svg" style="display:block;border:1px solid #C6BCA6;border-radius:2px;">
+    <rect width="296" height="238" fill="#E3EEF3"/>
+    <g stroke="#CBDCE3" stroke-width="0.6">
+      ${gridY.map((y) => `<line x1="0" y1="${y}" x2="296" y2="${y}"/>`).join('')}
+      ${gridX.map((x) => `<line x1="${x}" y1="0" x2="${x}" y2="238"/>`).join('')}
     </g>
-    <line x1="0" y1="132.1" x2="296" y2="132.1" stroke="#2D4B70" stroke-width="0.7" stroke-dasharray="3 3"/>
-    <g fill="#4F6B88" stroke="#1E3552" stroke-width="0.7" stroke-linejoin="round" transform="scale(1, 1.084)">
-      <!-- North America -->
-      <path d="M12,26 L24,20 L48,18 L76,22 L92,32 L88,44 L100,48 L88,61 L76,74 L68,77 L64,89 L74,97 L72,105 L64,103 L52,91 L42,74 L30,54 L20,42 L10,35 Z"/>
-      <!-- Greenland -->
-      <path d="M104,8 L126,7 L132,20 L118,32 L106,24 Z"/>
-      <!-- South America -->
-      <path d="M74,105 L88,107 L104,119 L116,131 L114,146 L104,164 L94,184 L86,202 L78,198 L78,174 L74,151 L68,131 L70,113 Z"/>
-      <!-- Europe + Scandinavia + UK -->
-      <path d="M135,54 L144,44 L152,32 L162,22 L176,22 L174,37 L166,46 L176,52 L176,61 L162,63 L154,67 L144,63 L136,63 Z"/>
-      <path d="M136,44 L142,42 L144,50 L137,51 Z"/>
-      <!-- Africa + Madagascar -->
-      <path d="M134,70 L156,67 L174,75 L186,97 L190,107 L182,125 L176,146 L166,170 L156,170 L148,149 L144,127 L130,111 L124,95 L128,79 Z"/>
-      <path d="M184,146 L188,142 L190,159 L185,161 Z"/>
-      <!-- Russia & Asia mainland + India + SE Asia -->
-      <path d="M174,22 L212,18 L254,22 L286,28 L280,44 L264,52 L254,65 L246,74 L242,87 L232,99 L226,111 L220,105 L216,95 L206,109 L198,93 L188,91 L178,93 L172,75 L168,65 L176,59 Z"/>
-      <!-- Japan -->
-      <path d="M258,52 L265,48 L267,59 L259,65 Z"/>
-      <!-- Philippines & Indonesia -->
-      <path d="M244,95 L250,95 L251,107 L245,107 Z"/>
-      <path d="M226,119 L246,121 L256,125 L240,128 L224,125 Z"/>
-      <!-- Australia -->
-      <path d="M238,146 L256,142 L270,151 L274,170 L262,184 L244,181 L234,168 Z"/>
-      <!-- New Zealand -->
-      <path d="M286,182 L292,179 L294,192 L286,196 Z"/>
+    <line x1="0" y1="${eqY}" x2="296" y2="${eqY}" stroke="#B3CBD6" stroke-width="0.75" stroke-dasharray="3 3"/>
+    <g fill="#D5CBB7" stroke="#9A8E78" stroke-width="0.65" stroke-linejoin="round">
+      ${landSvg}
+    </g>
+    <g fill="#E3EEF3" stroke="#9A8E78" stroke-width="0.45">
+      ${seaSvg}
     </g>
     ${pins}
   </svg>`;

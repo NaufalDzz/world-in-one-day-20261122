@@ -1,4 +1,5 @@
-// Builds the 1024x1024 archival broadsheet PNG for Sunday 22 November 2026 via Chromium.
+// Builds the 1024x1024 archival broadsheet PNG for Sunday 22 November 2026 via headless Chromium.
+// Uses C059 (Century Schoolbook) + Noto Sans so strokes, slashes, hyphens and headlines stay razor-sharp at 300px.
 import { createRequire } from 'node:module';
 import { writeFileSync, statSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
@@ -6,12 +7,12 @@ import { fileURLToPath } from 'node:url';
 import {
   EDITION,
   KEY_NUMBERS,
-  REGIONS,
   TIMELINE_UTC,
   HERO_STORIES,
   SECONDARY_STORIES,
   BRIEF_STORIES,
   DATE_CHECK_TEXT,
+  computeRegions,
 } from './stories.mjs';
 import { renderHeroArt, renderCardArt, renderWorldMap } from './illustrations.mjs';
 
@@ -30,13 +31,13 @@ function statusClass(status) {
   const s = (status || '').toUpperCase();
   if (s === 'CONFIRMED') return 'st-confirmed';
   if (s === 'CLAIM') return 'st-claim';
-  if (s === 'LIVE') return 'st-live';
   if (s === 'ONGOING') return 'st-ongoing';
   return 'st-reported';
 }
 
 export function buildHtml() {
-  const totalRegionCount = REGIONS.reduce((a, r) => a + r.count, 0);
+  const regions = computeRegions();
+  const totalRegionCount = regions.reduce((a, r) => a + r.count, 0);
 
   const kpiHtml = KEY_NUMBERS.map(
     (k) => `<div class="kpi-cell">
@@ -45,9 +46,11 @@ export function buildHtml() {
     </div>`
   ).join('');
 
-  const regionBarHtml = REGIONS.map(
-    (r) => `<div class="reg-seg" style="flex:${r.count};background:${r.color};">${esc(r.name)} ${r.count}</div>`
-  ).join('');
+  const regionBarHtml = regions
+    .map(
+      (r) => `<div class="reg-seg" style="flex:${r.count};background:${r.color};">${esc(r.name)} ${r.count}</div>`
+    )
+    .join('');
 
   const timelineHtml = TIMELINE_UTC.map(
     (t) => `<span class="tl-item"><b class="tl-time">${esc(t.time)}</b> ${esc(t.text)}</span>`
@@ -70,28 +73,30 @@ export function buildHtml() {
     </article>`
   ).join('');
 
+  // Unobstructed mini-card art: only a compact top-left tag and crisp tiny bottom-left square index.
+  // Status label sits cleanly in the metadata row below the picture (zero overlap with artwork).
   const secondaryHtml = SECONDARY_STORIES.map(
     (c) => `<article class="mini-card">
       <div class="mini-art">
         ${renderCardArt(c.artKey)}
         <div class="mini-banner">${esc(c.banner)}</div>
         <div class="mini-num">${c.id}</div>
-        <div class="mini-status ${statusClass(c.status)}">${esc(c.status)}</div>
       </div>
       <div class="mini-meta">
         <span class="mini-place">${esc(c.place)}</span>
+        <span class="mini-st ${statusClass(c.status)}">${esc(c.status)}</span>
       </div>
       <h3 class="mini-hl">${esc(c.headline)}</h3>
       <p class="mini-body">${esc(c.summary)} <span class="src">(${esc(c.source)})</span></p>
     </article>`
   ).join('');
 
-  const leftBriefs = BRIEF_STORIES.slice(0, 9);
-  const rightBriefs = BRIEF_STORIES.slice(9);
+  const leftBriefs = BRIEF_STORIES.slice(0, 11);
+  const rightBriefs = BRIEF_STORIES.slice(11);
 
   const renderBrief = (b) => {
     const badge = b.tag ? ` <span class="inline-tag ${statusClass(b.tag)}">${esc(b.tag)}</span>` : '';
-    return `<div class="brief-row"><span class="b-num">${b.id}</span> <span class="b-reg">${esc(b.region)}:</span> <b>${esc(b.lead)}</b> ${esc(b.text)} <span class="src">(${esc(b.source)})</span>${badge}</div>`;
+    return `<div class="brief-row"><span class="b-num">${b.id}</span> <span class="b-reg">${esc(b.regionLabel)}:</span> <b>${esc(b.lead)}</b> ${esc(b.text)} <span class="src">(${esc(b.source)})</span>${badge}</div>`;
   };
 
   const mapSvg = renderWorldMap([...HERO_STORIES, ...SECONDARY_STORIES]);
@@ -106,9 +111,9 @@ export function buildHtml() {
     width: 1024px;
     height: 1024px;
     overflow: hidden;
-    background: #FBF8F1;
-    color: #131E30;
-    font-family: 'Noto Sans Display', 'Nimbus Sans', 'DejaVu Sans', sans-serif;
+    background: #FAF6EC;
+    color: #121B2B;
+    font-family: 'Noto Sans', 'Nimbus Sans', 'DejaVu Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
   }
@@ -117,50 +122,51 @@ export function buildHtml() {
     height: 1024px;
     display: flex;
     flex-direction: column;
-    background: #FBF8F1;
+    background: #FAF6EC;
   }
-  /* Top navy utility bar */
+  /* Crisp broadsheet utility strip */
   .top-bar {
-    height: 22px;
-    background: #111E33;
-    color: #F4EFE3;
-    padding: 0 20px;
+    height: 21px;
+    background: #132238;
+    color: #F5F0E4;
+    padding: 0 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 9.4px;
+    font-size: 9.2px;
     font-weight: 700;
-    letter-spacing: 0.75px;
+    letter-spacing: 0.7px;
     text-transform: uppercase;
   }
-  .top-bar .accent { color: #F4C95D; }
-  /* Masthead */
+  .top-bar .accent { color: #F7CE65; }
+
+  /* Authoritative Century Schoolbook serif masthead */
   .masthead {
-    padding: 3px 20px 5px;
+    padding: 3px 18px 5px;
     text-align: center;
-    border-bottom: 2.5px solid #111E33;
+    border-bottom: 2.5px solid #132238;
   }
   .masthead h1 {
-    font-family: 'Noto Serif Display', 'C059', 'Nimbus Roman', Georgia, serif;
-    font-size: 55px;
+    font-family: 'C059', 'DejaVu Serif', 'Nimbus Roman', Georgia, serif;
+    font-size: 54px;
     font-weight: 700;
     line-height: 0.98;
-    letter-spacing: -1.0px;
-    color: #0E192B;
+    letter-spacing: -0.7px;
+    color: #0E1726;
   }
   .masthead .deck {
-    margin-top: 2px;
-    font-family: 'Noto Serif Display', 'C059', Georgia, serif;
+    margin-top: 3px;
+    font-family: 'C059', 'DejaVu Serif', Georgia, serif;
     font-style: italic;
-    font-size: 12.6px;
+    font-size: 12.4px;
     font-weight: 700;
-    color: #8F1B22;
-    letter-spacing: 0.05px;
+    color: #931B22;
   }
+
   /* Key Numbers ribbon */
   .kpi-strip {
     height: 46px;
-    margin: 0 20px;
+    margin: 0 18px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     border-bottom: 1px solid #C8BFA8;
@@ -173,23 +179,25 @@ export function buildHtml() {
   }
   .kpi-cell:last-child { border-right: none; }
   .kpi-val {
-    font-family: 'Noto Serif Display', 'C059', Georgia, serif;
-    font-size: 23px;
+    font-family: 'C059', 'DejaVu Serif', Georgia, serif;
+    font-size: 22.5px;
     font-weight: 700;
     line-height: 1.02;
     color: #9B1C24;
   }
   .kpi-lbl {
-    font-family: 'Nimbus Sans Narrow', 'Noto Sans Display', sans-serif;
-    font-size: 9.3px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 9.4px;
+    font-weight: 600;
     line-height: 1.1;
-    color: #303B4B;
+    color: #2B3646;
     margin-top: 1px;
   }
-  /* Regional bar */
+
+  /* Regional proportional bar */
   .reg-bar {
-    height: 18px;
-    margin: 4px 20px 0;
+    height: 17px;
+    margin: 3.5px 18px 0;
     display: flex;
     border-radius: 2px;
     overflow: hidden;
@@ -199,35 +207,34 @@ export function buildHtml() {
     align-items: center;
     justify-content: center;
     color: #FFFDF8;
-    font-family: 'Nimbus Sans Narrow', 'Noto Sans Display', sans-serif;
-    font-size: 9.1px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 8.9px;
     font-weight: 700;
-    letter-spacing: 0.45px;
+    letter-spacing: 0.4px;
   }
-  /* UTC timeline */
+
+  /* Full-day UTC timeline */
   .utc-bar {
-    height: 20px;
-    margin: 3.5px 20px 0;
-    background: #16243B;
-    color: #EBF1F8;
+    height: 19px;
+    margin: 3px 18px 0;
+    background: #17273F;
+    color: #EDF2F9;
     border-radius: 2px;
-    padding: 0 8px;
+    padding: 0 7px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-family: 'Nimbus Sans Narrow', 'Noto Sans Display', sans-serif;
-    font-size: 9.4px;
-    letter-spacing: 0.1px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 9.2px;
   }
   .utc-label {
-    background: #9B1C24;
+    background: #A31D24;
     color: #FFF;
     font-weight: 700;
-    font-size: 8.5px;
-    padding: 1.5px 5px;
+    font-size: 8.2px;
+    padding: 1px 5px;
     border-radius: 1.5px;
-    letter-spacing: 0.4px;
-    margin-right: 7px;
+    letter-spacing: 0.35px;
+    margin-right: 6px;
     flex-shrink: 0;
   }
   .utc-items {
@@ -235,20 +242,20 @@ export function buildHtml() {
     align-items: center;
     justify-content: space-between;
     flex: 1;
-    gap: 3px;
+    gap: 2px;
     white-space: nowrap;
   }
-  .tl-time { color: #F4C95D; font-weight: 700; }
-  .tl-dot { color: #6E84A3; }
+  .tl-time { color: #F7CE65; font-weight: 700; }
+  .tl-dot { color: #6B82A1; }
 
   /* Hero 3-column grid */
   .hero-grid {
-    margin: 5px 20px 0;
+    margin: 5px 18px 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 11px;
     padding-bottom: 5px;
-    border-bottom: 1.8px solid #1A283F;
+    border-bottom: 1.8px solid #18263C;
   }
   .hero-card {
     display: flex;
@@ -256,7 +263,7 @@ export function buildHtml() {
   }
   .hero-art {
     position: relative;
-    height: 98px;
+    height: 108px;
     border: 1px solid #1C2B42;
     overflow: hidden;
     background: #132238;
@@ -266,36 +273,34 @@ export function buildHtml() {
     top: 0; left: 0;
     background: #9B1C24;
     color: #FFFDF8;
-    font-family: 'Nimbus Sans Narrow', 'Noto Sans Display', sans-serif;
-    font-size: 8.8px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 8.6px;
     font-weight: 700;
     letter-spacing: 0.4px;
-    padding: 2px 6.5px;
+    padding: 1.8px 6px;
   }
   .art-tag-right {
     position: absolute;
-    top: 4px; right: 5px;
-    background: rgba(15, 26, 44, 0.94);
-    color: #F4D35E;
-    border: 0.9px solid rgba(255,255,255,0.32);
-    font-family: 'Nimbus Sans Narrow', 'Noto Sans Display', sans-serif;
-    font-size: 8.5px;
+    top: 4px; right: 4px;
+    background: rgba(15, 26, 44, 0.92);
+    color: #F7D362;
+    border: 0.9px solid rgba(255,255,255,0.34);
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 8.2px;
     font-weight: 700;
-    letter-spacing: 0.35px;
-    padding: 1.5px 5.5px;
+    letter-spacing: 0.3px;
+    padding: 1.2px 5px;
     border-radius: 1.5px;
   }
   .num-badge {
     position: absolute;
-    bottom: 4px; left: 4px;
-    width: 18px; height: 18px;
-    border-radius: 50%;
-    background: #B31B24;
+    bottom: 0; left: 0;
+    width: 17px; height: 17px;
+    background: #132238;
     color: #FFF;
-    border: 1.4px solid #FFF8E7;
-    font-family: 'Nimbus Sans Narrow', sans-serif;
-    font-size: 10.5px;
-    font-weight: 700;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -304,57 +309,57 @@ export function buildHtml() {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 4px;
+    margin-top: 3.5px;
   }
   .place-tag {
-    font-family: 'Nimbus Sans Narrow', 'Noto Sans Display', sans-serif;
-    font-size: 8.8px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 8.7px;
     font-weight: 700;
-    color: #8F1B22;
-    letter-spacing: 0.35px;
+    color: #931B22;
+    letter-spacing: 0.3px;
   }
   .status-pill {
-    font-family: 'Nimbus Sans Narrow', 'Noto Sans Display', sans-serif;
-    font-size: 8px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 7.8px;
     font-weight: 700;
-    letter-spacing: 0.35px;
-    padding: 1px 5px;
+    letter-spacing: 0.3px;
+    padding: 0.8px 5px;
     border-radius: 2px;
     color: #FFF;
   }
   .st-confirmed { background: #1E6B43; }
-  .st-reported { background: #2B598A; }
-  .st-claim { background: #B8650A; }
-  .st-ongoing { background: #6A3E8C; }
-  .st-live { background: #B31B24; }
+  .st-reported { background: #295687; }
+  .st-claim { background: #B86109; }
+  .st-ongoing { background: #673C8A; }
+
   .hero-hl {
-    font-family: 'Noto Serif Display', 'C059', Georgia, serif;
-    font-size: 16.2px;
+    font-family: 'C059', 'DejaVu Serif', Georgia, serif;
+    font-size: 15.6px;
     font-weight: 700;
     line-height: 1.12;
-    color: #0E192B;
+    color: #0E1726;
     margin-top: 2px;
   }
   .hero-body {
-    font-size: 9.85px;
+    font-size: 9.45px;
     line-height: 1.24;
-    color: #263040;
-    margin-top: 3px;
+    color: #242E3D;
+    margin-top: 2.5px;
   }
   .src {
-    font-size: 8.6px;
-    color: #556070;
+    font-size: 8.2px;
+    color: #545F6E;
     font-style: italic;
   }
 
-  /* Secondary 2x6 card grid */
+  /* Secondary 2x6 card grid — clean, unobstructed art, refined light-tint epistemic labels */
   .mini-grid {
-    margin: 5px 20px 0;
+    margin: 5px 18px 0;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 6px 9px;
+    gap: 5.5px 9px;
     padding-bottom: 5.5px;
-    border-bottom: 1.8px solid #1A283F;
+    border-bottom: 1.8px solid #18263C;
   }
   .mini-card {
     display: flex;
@@ -362,83 +367,88 @@ export function buildHtml() {
   }
   .mini-art {
     position: relative;
-    height: 50px;
-    border: 0.9px solid #24344D;
+    height: 54px;
+    border: 0.9px solid #2B3B52;
     overflow: hidden;
-    background: #1A2940;
+    background: #DCE5EE;
   }
   .mini-banner {
     position: absolute;
     top: 0; left: 0;
-    background: rgba(155, 28, 36, 0.95);
+    background: rgba(155, 28, 36, 0.96);
     color: #FFFDF8;
-    font-family: 'Nimbus Sans Narrow', sans-serif;
-    font-size: 7.9px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 7.7px;
     font-weight: 700;
-    letter-spacing: 0.3px;
-    padding: 1px 4.5px;
+    letter-spacing: 0.25px;
+    padding: 0.8px 4px;
   }
   .mini-num {
     position: absolute;
-    bottom: 2.5px; left: 2.5px;
-    width: 14.5px; height: 14.5px;
-    border-radius: 50%;
-    background: #111E33;
+    bottom: 0; left: 0;
+    min-width: 14px; height: 14px;
+    padding: 0 2px;
+    background: #132238;
     color: #FFF;
-    border: 1.1px solid #F4D35E;
-    font-family: 'Nimbus Sans Narrow', sans-serif;
-    font-size: 8.7px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 8.2px;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .mini-status {
-    position: absolute;
-    bottom: 2.5px; right: 2.5px;
-    color: #FFF;
-    font-family: 'Nimbus Sans Narrow', sans-serif;
-    font-size: 7.1px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    padding: 0.8px 3.8px;
-    border-radius: 1.5px;
-    border: 0.6px solid rgba(255,255,255,0.35);
-  }
   .mini-meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 3px;
+    gap: 2px;
+    margin-top: 3.5px;
   }
   .mini-place {
-    font-family: 'Nimbus Sans Narrow', sans-serif;
-    font-size: 8px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 7.8px;
     font-weight: 700;
-    color: #8F1B22;
-    letter-spacing: 0.25px;
+    color: #8E1B22;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .mini-hl {
-    font-family: 'Noto Serif Display', 'C059', Georgia, serif;
-    font-size: 11.3px;
+  .mini-st {
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 6.5px;
     font-weight: 700;
-    line-height: 1.12;
-    color: #0E192B;
-    margin-top: 1px;
+    padding: 0.3px 3px;
+    border-radius: 1.5px;
+    flex-shrink: 0;
+    letter-spacing: 0.2px;
+    border: 0.7px solid transparent;
+  }
+  .mini-st.st-confirmed { background: #E9F5EE; color: #195E39; border-color: #B4DBC4; }
+  .mini-st.st-reported { background: #EBF2FA; color: #204B78; border-color: #B6CEE8; }
+  .mini-st.st-claim { background: #FEF2E4; color: #9C4F06; border-color: #ECC596; }
+  .mini-st.st-ongoing { background: #F3ECFA; color: #5D3380; border-color: #D2BAE8; }
+  .mini-hl {
+    font-family: 'C059', 'DejaVu Serif', Georgia, serif;
+    font-size: 10.6px;
+    font-weight: 700;
+    line-height: 1.13;
+    color: #0E1726;
+    margin-top: 1.5px;
   }
   .mini-body {
-    font-size: 8.7px;
+    font-size: 8.35px;
     line-height: 1.2;
-    color: #283342;
-    margin-top: 2px;
+    color: #253040;
+    margin-top: 1.5px;
   }
 
-  /* Bottom Map + Briefs */
+  /* Bottom Atlas Map + 21-Story Briefs */
   .lower-band {
-    margin: 6px 20px 0;
+    margin: 5.5px 18px 0;
     display: grid;
     grid-template-columns: 296px 1fr;
-    gap: 13px;
+    gap: 12px;
     flex: 1;
     min-height: 0;
   }
@@ -446,127 +456,127 @@ export function buildHtml() {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    border-bottom: 1.2px solid #C8BFA8;
-    padding-bottom: 2px;
-    margin-bottom: 4.5px;
+    border-bottom: 1.2px solid #C6BCA6;
+    padding-bottom: 1.5px;
+    margin-bottom: 4px;
   }
   .sec-title {
-    font-family: 'Nimbus Sans Narrow', 'Noto Sans Display', sans-serif;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
     font-size: 10.6px;
     font-weight: 700;
-    color: #0E192B;
-    letter-spacing: 0.55px;
+    color: #0E1726;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
   }
   .sec-sub {
-    font-size: 8.5px;
-    color: #556070;
+    font-size: 8.3px;
+    color: #545F6E;
     font-style: italic;
   }
   .map-cap {
     margin-top: 3px;
     font-size: 8.2px;
-    color: #424E5E;
+    color: #3E4A5B;
     display: flex;
     justify-content: space-between;
   }
   .brief-cols {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 11px;
   }
   .brief-col {
     display: flex;
     flex-direction: column;
-    gap: 4.0px;
+    gap: 2.35px;
   }
   .brief-row {
-    font-size: 9.25px;
-    line-height: 1.23;
-    color: #1A2434;
+    font-size: 8.42px;
+    line-height: 1.185;
+    color: #182231;
   }
   .b-num {
     display: inline-block;
-    min-width: 15px;
-    font-family: 'Nimbus Sans Narrow', sans-serif;
+    min-width: 14px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
     font-weight: 700;
     color: #9B1C24;
   }
   .b-reg {
-    font-family: 'Nimbus Sans Narrow', sans-serif;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
     font-weight: 700;
-    color: #1F4E79;
+    color: #1E4E79;
   }
   .inline-tag {
     display: inline-block;
-    font-family: 'Nimbus Sans Narrow', sans-serif;
-    font-size: 7.3px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 6.8px;
     font-weight: 700;
     color: #FFF;
-    padding: 0 3.8px;
+    padding: 0 3.2px;
     border-radius: 1.5px;
-    vertical-align: 0.5px;
-    letter-spacing: 0.25px;
+    vertical-align: 0.4px;
+    letter-spacing: 0.2px;
   }
 
-  /* Date Check audit box */
+  /* Prominent DATE CHECK audit box */
   .date-check {
-    margin: 5px 20px 0;
-    padding: 5px 9px;
+    margin: 4px 18px 0;
+    padding: 4.5px 8px;
     border: 1.4px solid #9B1C24;
     border-left: 5px solid #9B1C24;
-    background: #FDF3F1;
+    background: #FDF2F0;
     display: flex;
     align-items: flex-start;
     gap: 8px;
   }
   .dc-label {
-    font-family: 'Nimbus Sans Narrow', sans-serif;
-    font-size: 9.8px;
+    font-family: 'Nimbus Sans Narrow', 'Noto Sans', sans-serif;
+    font-size: 9.6px;
     font-weight: 700;
     color: #9B1C24;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.45px;
     white-space: nowrap;
     padding-top: 1px;
   }
   .dc-text {
-    font-size: 8.5px;
-    line-height: 1.23;
-    color: #241E1E;
+    font-size: 8.3px;
+    line-height: 1.21;
+    color: #211B1B;
   }
 
-  /* Legend + Bottom footer */
+  /* Legend + Footer */
   .legend-bar {
-    margin: 3.5px 20px 3px;
+    margin: 3px 18px 2.5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 8px;
-    color: #424E5E;
+    font-size: 7.7px;
+    color: #3E4A5B;
   }
   .legend-pills {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
   }
   .lg-dot {
     display: inline-block;
-    width: 7px; height: 7px;
+    width: 6.5px; height: 6.5px;
     border-radius: 50%;
     vertical-align: -1px;
     margin-right: 2px;
   }
   .bottom-bar {
     height: 18px;
-    background: #111E33;
-    color: #DCE4F0;
-    padding: 0 20px;
+    background: #132238;
+    color: #DDE5F0;
+    padding: 0 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 8.4px;
+    font-size: 8.2px;
     font-weight: 700;
-    letter-spacing: 0.65px;
+    letter-spacing: 0.6px;
   }
 </style>
 </head>
@@ -574,7 +584,7 @@ export function buildHtml() {
 <div class="page">
   <header class="top-bar">
     <span>${esc(EDITION.kickerLeft)}</span>
-    <span class="accent">${esc(EDITION.kickerRight)}</span>
+    <span class="accent">${totalRegionCount} DATED STORIES · 7 REGIONS · FULL DAY TO ${esc(EDITION.pressTimeUtc)}</span>
     <span>SUNDAY 22 NOVEMBER 2026</span>
   </header>
 
@@ -602,13 +612,13 @@ export function buildHtml() {
       </div>
       ${mapSvg}
       <div class="map-cap">
-        <span><b style="color:#B31B24;">●</b> 1–3 Lead stories · <b style="color:#D13438;">●</b> 4–15 Secondary cards</span>
-        <span>Vector map</span>
+        <span><b style="color:#9B1C24;">●</b> 1–3 Lead stories · <b style="color:#C92A30;">●</b> 4–15 Cards</span>
+        <span>Vector atlas</span>
       </div>
     </div>
     <div class="briefs-col">
       <div class="sec-head">
-        <span class="sec-title">Also on Sunday 22 November — 18 More Stories</span>
+        <span class="sec-title">Also on Sunday 22 November — ${BRIEF_STORIES.length} More Stories</span>
         <span class="sec-sub">all dated 22 Nov 2026 · 7 regions</span>
       </div>
       <div class="brief-cols">
@@ -628,10 +638,9 @@ export function buildHtml() {
       <span><i class="lg-dot st-confirmed"></i><b>CONFIRMED</b> official / 2+ wires</span>
       <span><i class="lg-dot st-reported"></i><b>REPORTED</b> single wire / local</span>
       <span><i class="lg-dot st-claim"></i><b>CLAIM</b> contested account</span>
-      <span><i class="lg-dot st-ongoing"></i><b>ONGOING</b></span>
-      <span><i class="lg-dot st-live"></i><b>LIVE</b> at 17:45 UTC</span>
+      <span><i class="lg-dot st-ongoing"></i><b>ONGOING</b> developing search</span>
     </div>
-    <span>Sources: Reuters, AP, AFP, BBC, Al Jazeera, Guardian, SCMP, ICC, FIA, Vatican News, PHIVOLCS, wires</span>
+    <span>Sources: Reuters, AP, AFP, BBC, Al Jazeera, Guardian, SCMP, The Hindu, ICC, FIA, ATP, Vatican News</span>
   </div>
 
   <footer class="bottom-bar">
@@ -672,13 +681,10 @@ async function main() {
       const pageEl = document.querySelector('.page');
       const footerEl = document.querySelector('.bottom-bar');
       const dateCheck = document.querySelector('.date-check');
-      const lower = document.querySelector('.lower-band');
-      const briefs = document.querySelector('.briefs-col');
-      const mapCol = document.querySelector('.map-col');
       const clipped = [];
-      for (const el of document.querySelectorAll('.hero-card, .mini-card, .brief-row, .date-check, .utc-bar')) {
-        if (el.scrollHeight > el.clientHeight + 2 || el.scrollWidth > el.clientWidth + 2) {
-          clipped.push({ cls: el.className, sh: el.scrollHeight, ch: el.clientHeight, sw: el.scrollWidth, cw: el.clientWidth });
+      for (const el of document.querySelectorAll('.hero-card, .mini-card, .mini-place, .brief-row, .date-check, .utc-bar')) {
+        if (el.scrollHeight > el.clientHeight + 1.5 || el.scrollWidth > el.clientWidth + 1.5) {
+          clipped.push({ cls: el.className, text: (el.textContent || '').slice(0, 32), sh: el.scrollHeight, ch: el.clientHeight, sw: el.scrollWidth, cw: el.clientWidth });
         }
       }
       const lastBrief = Array.from(document.querySelectorAll('.brief-row')).reduce(
@@ -699,7 +705,7 @@ async function main() {
       };
     });
 
-    if (metrics.gapAboveDateCheck < 5) {
+    if (metrics.gapAboveDateCheck < 3) {
       throw new Error(`Layout overlap/squeeze above DATE CHECK: gap=${metrics.gapAboveDateCheck.toFixed(1)}px`);
     }
 

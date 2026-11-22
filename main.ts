@@ -1,5 +1,6 @@
 // Deterministic offline entry for make.fun news-image-20261122 (Node 22 stdlib only).
-// Validates the bundled 1024x1024 PNG artwork and writes /output/entry.png byte-identically.
+// Validates the bundled 1024x1024 PNG artwork (signature, IHDR dimensions, IEND chunk & byte cap)
+// and writes /output/entry.png byte-identically on every run.
 
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
